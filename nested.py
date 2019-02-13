@@ -19,12 +19,13 @@ bracket_dict = {
     "]": "[" 
 }
 
-open_brackets = [ '(', '(*', '<', '{', '[' ]
+open_brackets = ['(', '(*', '<', '{', '[']
+
 
 def check_brackets(line):
     list3 = []
     
-    for i , char in enumerate(line, 1):
+    for i, char in enumerate(line, 1):
         if char in open_brackets:
             list3.append(char)
         elif char in bracket_dict:
@@ -39,7 +40,8 @@ def check_brackets(line):
         return 'NO ' + str(len(line) + 1)
 
     return 'YES'
-    
+
+
 def split_line(line):
     list1 = list(line)[:-1]
     list2 = []
@@ -56,18 +58,19 @@ def split_line(line):
             list2.append(list1[i])
         i += 1
     return list2
-    
+
+
 def main(filename):
     if len(sys.argv) != 2:
-        print 'usage: python nested_brackets.py file-to-read'
+        print('usage: python nested_brackets.py file-to-read')
         sys.exit(1)
-
     file = open(filename, "r").readlines()
     for line in file:
         split = split_line(line)
         result = check_brackets(split)
-        print result
+        print(result)
+
 
 if __name__ == '__main__':
-    filename = sys.argv[1]
-    main(filename)
+    f = sys.argv[1]
+    main(f)
