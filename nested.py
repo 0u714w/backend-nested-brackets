@@ -22,10 +22,11 @@ bracket_dict = {
 open_brackets = ['(', '(*', '<', '{', '[']
 
 
-def check_brackets(line):
+def check_brackets(expression_list):
+    """Checks list of brackets for matching open brackets"""
     list3 = []
     
-    for i, char in enumerate(line, 1):
+    for i, char in enumerate(expression_list, 1):
         if char in open_brackets:
             list3.append(char)
         elif char in bracket_dict:
@@ -37,12 +38,13 @@ def check_brackets(line):
             continue
     
     if len(list3):
-        return 'NO ' + str(len(line) + 1)
+        return 'NO ' + str(len(expression_list) + 1)
 
     return 'YES'
 
 
 def split_line(line):
+    """Splits each line into individual characters (including '(*' and '*)"""
     list1 = list(line)[:-1]
     list2 = []
     length = len(list1)
